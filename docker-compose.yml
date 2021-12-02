@@ -1,0 +1,37 @@
+version: "3.7"
+#Ensure that your host can accept X forwarded connections
+# xhost +
+
+services:
+    cloisim:
+        build: ./cloisim-engine
+        environment:
+          - DISPLAY
+        volumes:
+          - /tmp/.Xauthority:/tmp/.Xauthority
+          - /tmp/cloisim/unity3d:/root/.config/unity3d 
+          - /tmp/.X11-unix:/tmp/.X11-unix  
+          - /usr/share/fonts/:/usr/share/fonts/ 
+          - ${CLOISIM_RESOURCES_PATH}/materials:/opt/resources/materials/ 
+          - ${CLOISIM_RESOURCES_PATH}/models:/opt/resources/models/
+          - ${CLOISIM_RESOURCES_PATH}/worlds:/opt/resources/worlds/ 
+        command:  lg_seocho.world
+        deploy: 
+           resources: 
+              reservations: 
+                 devices: 
+                   - capabilities: [gpu] 
+        
+    cloisim_ros:
+        build: ./cloisim-ros
+        environment:
+          - ROS_DOMAIN_ID=0
+          - CLOISIM_BRIDGE_IP=cloisim
+
+    gateway:
+        build: 
+          context: https://github.com/lge-cloud-ai-robot/ros2-ws-gateway.git#main
+        environment:
+          - ROS_DOMAIN_ID=0
+        ports:
+          - "9000:9000"
