@@ -30,7 +30,7 @@ services:
 
     gateway:
         build: 
-          context: https://github.com/lge-cloud-ai-robot/ros2-ws-gateway.git#main
+          context: https://${TOKEN}:@github.com/lge-cloud-ai-robot/ros2-ws-gateway.git#main
         environment:
           - ROS_DOMAIN_ID=0
         ports:

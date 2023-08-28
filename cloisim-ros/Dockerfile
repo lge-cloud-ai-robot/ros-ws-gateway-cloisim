@@ -1,4 +1,4 @@
-FROM ros:foxy-ros-base
+FROM ros:humble-ros-base
 
 ENV HOSTNAME cloisim_ros
 
@@ -14,7 +14,6 @@ rosdep install -y -r -q --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 
 RUN ["/bin/bash", "-c", "source /opt/ros/${ROS_DISTRO}/setup.bash; colcon build --symlink-install"]
 
+COPY ./.entrypoint.sh /opt/
 
-#COPY ./.entrypoint.sh /opt/
-
-ENTRYPOINT ["/bin/bash","-c","source /opt/lge-ros2/install/setup.bash; ros2 launch cloisim_ros_bringup bringup.launch.py"]
+ENTRYPOINT ["/opt/.entrypoint.sh"]
