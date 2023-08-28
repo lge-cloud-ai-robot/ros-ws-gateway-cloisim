@@ -7,14 +7,15 @@ git clone https://github.com/lge-ros2/sample_resources.git
 
 ## BUILD
 ```
+export TOKEN=<set your github token>
 export CLOISIM_RESOURCES_PATH=$PWD/sample_resources/
-docker-compose build
+docker compose build
 ```
 ## RUN
 ```
 export CLOISIM_RESOURCES_PATH=$PWD/sample_resources/
 xhost +
-docker-compose up
+docker compose up
 ```
 
 ## TEST API
