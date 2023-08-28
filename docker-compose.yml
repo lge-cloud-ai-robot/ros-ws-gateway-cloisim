@@ -12,7 +12,7 @@ services:
           - /tmp/cloisim/unity3d:/root/.config/unity3d 
           - /tmp/.X11-unix:/tmp/.X11-unix  
           - /usr/share/fonts/:/usr/share/fonts/ 
-          - ${CLOISIM_RESOURCES_PATH}/materials:/opt/resources/materials/ 
+          - ${CLOISIM_RESOURCES_PATH}/media:/opt/resources/media/ 
           - ${CLOISIM_RESOURCES_PATH}/models:/opt/resources/models/
           - ${CLOISIM_RESOURCES_PATH}/worlds:/opt/resources/worlds/ 
         command:  lg_seocho.world
