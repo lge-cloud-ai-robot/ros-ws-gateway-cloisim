@@ -16,7 +16,8 @@ RUN apt-get update -qq && \
     && apt-get clean
 
 # Get version info and extract simulator and remove downloaded file
-RUN export CLOISIM_VERSION=$(curl -Ls -o /dev/null -w %{url_effective} --url https://github.com/lge-ros2/cloisim/releases/latest | cut -d'/' -f8) && \
+#RUN export CLOISIM_VERSION=$(curl -Ls -o /dev/null -w %{url_effective} --url https://github.com/lge-ros2/cloisim/releases/latest | cut -d'/' -f8) && \
+RUN export CLOISIM_VERSION=3.0.1 && \
     export CLOISIM_TARGETFILE=CLOiSim-linux-${CLOISIM_VERSION} && \
     wget -q --directory-prefix /tmp "https://github.com/lge-ros2/cloisim/releases/download/${CLOISIM_VERSION}/${CLOISIM_TARGETFILE}.tar.xz" && \
     tar -xf /tmp/${CLOISIM_TARGETFILE}.tar.xz -C /tmp && rm /tmp/${CLOISIM_TARGETFILE}.tar.xz && \
