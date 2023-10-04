@@ -2,7 +2,7 @@
 
 ## Download resource
 ```
-git clone https://github.com/lge-ros2/sample_resources.git
+git clone https://github.com/lge-ros2/sample_resources.git -b v1.7.1
 ```
 
 ## BUILD
